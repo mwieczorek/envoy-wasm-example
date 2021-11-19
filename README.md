@@ -40,7 +40,7 @@ Update envoy.yaml config with your mockapi endpoint host:
 ## Run it
 
 ```sh
-envoy -c envoy.yaml -l debug --concurrency 1
+envoy -c envoy.yaml -l info --concurrency 1
 ```
 
 `--concurrency 1` to avoid mockapi.io rate limiting (by default envoy will run ~10 worker threads on my machine)

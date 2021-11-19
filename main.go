@@ -84,7 +84,7 @@ func (ctx *pluginContext) OnPluginStart(pluginConfigurationSize int) types.OnPlu
 		for _, domain := range v.GetArray() {
 			allowedDomains = append(allowedDomains, string(domain.GetStringBytes("name")))
 		}
-		proxywasm.LogInfof("allowed domains: %v", allowedDomains)
+		proxywasm.LogDebugf("allowed domains: %v", allowedDomains)
 
 	}
 	return types.OnPluginStartStatusOK
@@ -113,7 +113,6 @@ func (ctx *httpAuthRandom) OnHttpRequestHeaders(int, bool) types.Action {
 
 // Override types.DefaultPluginContext.
 func (ctx *pluginContext) OnTick() {
-	proxywasm.LogInfof("tick")
 	hs := [][2]string{
 		{":method", "GET"}, {":authority", ctx.apiHost}, {":path", "/domains"}, {"accept", "*/*"},
 	}
